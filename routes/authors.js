@@ -4,10 +4,17 @@ const router = express.Router()
 
 // All authors route
 router.get('/', async (req, res) => {
+    const searchOptions = {}
+    if (req.query.name != null && req.query.name !== ''){
+        searchOptions.name = new RegExp(req.query.name, 'i')
+    }
     try {
-        const authors = await Author.find({}).sort( { "name": 1 } ) // all
-        res.render("authors/index", {authors: authors})
-    } catch (error){
+        const authors = await Author.find(searchOptions).sort({ "name": 1 }) // all
+        res.render("authors/index", { 
+            authors: authors,
+            searchOptions: req.query
+        })
+    } catch (error) {
         res.redirect('/')
         console.log(error)
         // res.render('authors/new', {errorMessage: "All err"})
