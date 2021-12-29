@@ -1,3 +1,5 @@
 npm i express ejs express-ejs-layouts
 
 npm i --save-dev dotenv
+
+mpm i body-parser
