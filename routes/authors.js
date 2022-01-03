@@ -77,7 +77,7 @@ router.put('/:id', async (req, res) => {
         await author.save()
         res.redirect(`/authors/${author.id}`)
     } catch (e){
-        console.log(e);
+        // console.log(e);
         if (author == null){
             res.redirect('/')
         } else {
@@ -96,7 +96,7 @@ router.delete('/:id', async (req, res) => {
         await author.remove()
         res.redirect(`/authors`)
     } catch (e){
-        console.log(e);
+        // console.log(e);
         if (author == null){
             res.redirect('/')
         } else {
